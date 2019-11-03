@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
-    "server": "webpack-dev-server"
+    "build": "webpack"
   },
   "author": "jagger",
   "license": "ISC",
