@@ -12,15 +12,15 @@ var website = {
     publicPath:'./'
 }
 module.exports = {
-    // 入口文件
+    // // 入口文件
     entry: {
-        pageOne: path.join(__dirname,'./src/pageOne/js/pageOne.js'),
-        pageTwo: path.join(__dirname,'./src/pageTwo/js/pageTwo.js')
+        Demo1: path.join(__dirname,'./src/Demo1/index.jsx'),
+        Demo2: path.join(__dirname,'./src/Demo2/index.jsx')
     },
     // 输出文件
     output: {
         path: path.join(__dirname,'./build'),
-        filename:'js/[name].[chunkhash].js',
+        filename:'js/[name].[hash].js',
         publicPath: website.publicPath
     },
     // 模式
@@ -28,10 +28,8 @@ module.exports = {
     module: {
         rules: [
             {
-                test:/\.js?$/,
-                loader:'babel-loader',
-                //指定的js文件被babel处理
-                include: [path.join(__dirname,'./src/pageOne/js/pageOne.js'),path.join(__dirname,'./src/pageTwo/js/pageTwo.js')],
+                test:/\.js|jsx$/,
+                use:'babel-loader',
                 exclude: /node_modules/
             },
             {
@@ -78,18 +76,18 @@ module.exports = {
     plugins:[
         new CleanWebpackPlugin(), // 每次清除已生成
         new htmlPlugin({
-            template: './src/pageOne/index.html',   //html模板
-            filename: 'index.html',
-            title: 'this is pageOne.html',
+            template: './public/index.html',   //html模板
+            filename: 'Demo1.html',
+            title: 'this is Demo1.html',
             //增加指定的chunks   加载对应js文件
-            chunks:['pageOne']
+            chunks:['Demo1']
          }),
         new htmlPlugin({
-            template: './src/pageTwo/index.html',   //html模板
-            filename: 'pageTwo.html',
-            title: 'this is pageTwo.html',
+            template: './public/index.html',   //html模板
+            filename: 'Demo2.html',
+            title: 'this is Demo2.html',
             //增加指定的chunks   加载对应js文件
-            chunks:['pageTwo']
+            chunks:['Demo2']
          }),
         new extractTextPlugin({
             filename:(getPath)=>{
@@ -107,6 +105,12 @@ module.exports = {
             canPrint: true
         })
     ],
+    resolve: {
+        extensions:['.js','.jsx','.json','.vue'], //这几个文件的后缀名可以不写
+        alias:{
+            '@':path.join(__dirname,'./src')  // src路径别名
+        }
+    },
     devServer:{
         contentBase:path.resolve(__dirname,'build'),
         host: '192.168.1.89',
