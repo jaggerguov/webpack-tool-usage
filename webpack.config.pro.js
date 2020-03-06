@@ -15,7 +15,8 @@ module.exports = {
     // // 入口文件
     entry: {
         Demo1: path.join(__dirname,'./src/Demo1/index.jsx'),
-        Demo2: path.join(__dirname,'./src/Demo2/index.jsx')
+        Demo2: path.join(__dirname,'./src/Demo2/index.jsx'),
+        mapSdk: path.join(__dirname,'./src/mapSdk/index.js')
     },
     // 输出文件
     output: {
@@ -110,12 +111,5 @@ module.exports = {
         alias:{
             '@':path.join(__dirname,'./src')  // src路径别名
         }
-    },
-    devServer:{
-        contentBase:path.resolve(__dirname,'build'),
-        host: '192.168.1.89',
-        compress: true,
-        hot: true,
-        port: 8088
     }
 }
