@@ -1,9 +1,11 @@
+
 # webpack-tool-usage 特性列表：
 ## 1. 多入口项目打包（js/css/html）
 ## 2. webpack-dev-server启动热更新监听，加载内存中的编译文件
 ## 3. 支持单独js文件打包（适用于一些sdkt接口的开发，类似于jquery)
 ## 4. 可扩展增加webpack.config.js文件配置自己规则的打包项目
 ## 5. 支持react开发
+## 6. 支持Eslint
 
 # 使用指导
 ## 1. 项目下载到本地电脑
